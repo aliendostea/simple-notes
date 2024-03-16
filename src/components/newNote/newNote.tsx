@@ -57,12 +57,11 @@ export default function NewNote() {
       return;
     }
     const id = window.crypto.randomUUID();
-    const splited = id.split("-");
 
     const newNote = {
       id,
-      title: `${title} ${splited[4]}`,
-      note: `${note} ${id}`,
+      title,
+      note,
       dateCreated: "",
       dateDeleted: "",
       dateEdited: "",

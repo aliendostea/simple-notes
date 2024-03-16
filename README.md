@@ -16,6 +16,10 @@ $ npm run dev
 
 - The server is listening on port http://localhost:3000/
 
+## What are the project routes? 📋
+
+- Click on https://simple-notes-theta.vercel.app/
+
 ## Technologies used 🛠️
 
 - [Reactjs](https://react.dev/)
