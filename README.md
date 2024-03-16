@@ -12,6 +12,15 @@ $ npm install
 # Run the development server:
 $ npm run dev
 
+# Run the build:
+$ npm run build
+
+# Run the linter:
+$ npm run lint
+
+# Run the test:
+$ npx playwright test --debug
+
 ```
 
 - The server is listening on port http://localhost:3000/

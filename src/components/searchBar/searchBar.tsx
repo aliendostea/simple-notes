@@ -11,7 +11,7 @@ export default function SearchBar({
   onClickReset: () => void;
 }) {
   return (
-    <div className={styles.box}>
+    <div className={styles.box} data-testid="box-search-bar">
       <label htmlFor="search-note">
         <Text as="span" size="3" weight="bold">
           Search note
