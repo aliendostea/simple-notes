@@ -76,7 +76,10 @@ export default function ListNotes() {
     setInputSearch("");
   };
   const notesFiltered = notes.filter((note: Note) => {
-    return note.title.toLowerCase().search(inputSearch.toLowerCase()) !== -1;
+    return (
+      note.title.toLowerCase().search(inputSearch.toLowerCase()) !== -1 ||
+      note.note.toLowerCase().search(inputSearch.toLowerCase()) !== -1
+    );
   });
 
   useEffect(() => {
