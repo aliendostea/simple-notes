@@ -1,0 +1,13 @@
+.box {
+  width: 23rem;
+  display: grid;
+  gap: 1rem;
+  background-color: #121b1e;
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  position: relative;
+}
+.form {
+  display: grid;
+  gap: 1rem;
+}
