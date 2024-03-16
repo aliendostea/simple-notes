@@ -1,0 +1,14 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+}
+
+.header > span {
+  align-self: center;
+}
+
+.header > div {
+  justify-self: end;
+}

@@ -1,0 +1,13 @@
+.box {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 10px;
+  position: relative;
+}
+.box > button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+}

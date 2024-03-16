@@ -1,10 +1,22 @@
-import Image from "next/image";
+import { Header } from "@/components/header";
+import { ListNotes } from "@/components/listNotes";
+import { Providers } from "./providers";
 import styles from "./page.module.css";
+import "@radix-ui/themes/styles.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
+      <Providers>
+        <div className={styles.description}>
+          <Header />
+          <h1 className="text-3xl font-bold underline">Hey, you can add all your notes here!</h1>
+        </div>
+
+        <div className={styles.center}>
+          <ListNotes />
+        </div>
+        {/* <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
@@ -89,7 +101,8 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
-      </div>
+      </div> */}
+      </Providers>
     </main>
   );
 }

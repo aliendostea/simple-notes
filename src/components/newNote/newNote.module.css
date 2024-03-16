@@ -1,0 +1,42 @@
+.btn {
+  padding: 1rem;
+  background-color: #5e5e5e;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  background-color: #121b1e79;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 1000;
+}
+
+.box {
+  width: 23rem;
+  display: grid;
+  gap: 1rem;
+  background-color: #121b1e;
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  position: relative;
+}
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.center22::before,
+.center22::after {
+  content: "";
+  left: 50%;
+  position: absolute;
+  filter: blur(45px);
+  transform: translateZ(0);
+}
