@@ -2,27 +2,24 @@ import { useState } from "react";
 import { Card, Text } from "@radix-ui/themes";
 import styles from "./note.module.css";
 
-function NotesOptions({ onClick }: { onClick: () => void }) {
-  return (
-    <div className={styles.options}>
-      <span>Edit</span>
-      <span onClick={onClick}>Remove</span>
-    </div>
-  );
+function NotesOptions({ children }: { children: JSX.Element[] }) {
+  return <div className={styles.options}>{children}</div>;
 }
 
 export default function Note({
   title,
   note,
   onClickRemoveNote,
+  onClickEditNote,
 }: {
   title: string;
   note: string;
   onClickRemoveNote: () => void;
+  onClickEditNote: () => void;
 }) {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
-  const handleOnClick = () => {
+  const handleOnClickOpenOptions = () => {
     setIsOptionsVisible((prevState) => !prevState);
   };
 
@@ -35,11 +32,16 @@ export default function Note({
         <Text as="div" color="gray" size="2">
           {note}
         </Text>
-        <button className={styles.dots} onClick={handleOnClick}>
+        <button className={styles.dots} onClick={handleOnClickOpenOptions} data-testid="button-dots-note">
           <span className={styles["span-dots"]}></span>
         </button>
       </Card>
-      {isOptionsVisible && <NotesOptions onClick={onClickRemoveNote} />}
+      {isOptionsVisible && (
+        <NotesOptions>
+          <button onClick={onClickEditNote}>Edit note</button>
+          <button onClick={onClickRemoveNote}>Remove</button>
+        </NotesOptions>
+      )}
     </div>
   );
 }

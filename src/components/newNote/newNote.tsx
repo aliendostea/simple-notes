@@ -3,22 +3,22 @@
 import { FormEvent } from "react";
 import useNotes from "@/hooks/use-notes";
 import { useModalStore } from "@/store/modal";
-import { Text, Button } from "@radix-ui/themes";
+import { PortalModal, WrapperModal } from "../modal";
 import { Form } from "../form";
-import styles from "./newNote.module.css";
+import { Text, Button } from "@radix-ui/themes";
 
 const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
 
 export default function NewNote() {
-  const { isModalOpen, openModal, closeModal } = useModalStore();
+  const { isNewNoteModalOpen, openModal, closeModal } = useModalStore();
   const { handleAddNote } = useNotes();
 
   const handleOnClickOpenModal = () => {
-    openModal();
+    openModal("isNewNoteModalOpen");
   };
   const handleOnClickCloseModal = () => {
-    closeModal();
+    closeModal("isNewNoteModalOpen");
   };
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -44,7 +44,7 @@ export default function NewNote() {
     };
     handleAddNote(newNote);
     form.reset();
-    closeModal();
+    closeModal("isNewNoteModalOpen");
   };
 
   return (
@@ -53,7 +53,25 @@ export default function NewNote() {
         Add new note
       </Button>
 
-      {isModalOpen && (
+      <PortalModal selector="modal-portal" show={isNewNoteModalOpen}>
+        <WrapperModal>
+          <Form onSubmit={handleOnSubmit}>
+            <Button
+              size="3"
+              variant="soft"
+              color="ruby"
+              style={{ position: "absolute", top: 0, right: 0 }}
+              onClick={handleOnClickCloseModal}
+            >
+              <Text as="span" color="ruby" size="3">
+                x
+              </Text>
+            </Button>
+          </Form>
+        </WrapperModal>
+      </PortalModal>
+
+      {/* {isModalOpen && (
         <div className={styles.modal}>
           <Form onSubmit={handleOnSubmit}>
             <Button
@@ -69,7 +87,7 @@ export default function NewNote() {
             </Button>
           </Form>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

@@ -80,17 +80,23 @@
   right: 24px;
 }
 
-.options span {
+.options button {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 3px;
+  text-align: left;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
   cursor: pointer;
 }
 
-.options span:hover {
+.options button:hover {
   background-color: hsla(208, 100%, 97%, 0.22);
 }
 

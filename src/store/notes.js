@@ -77,6 +77,13 @@ export const useNotesStore = create((set) => ({
       useLocalStorageAddNote(notesClone);
       return { notes: notesClone };
     }),
+  edit: (note) =>
+    set((state) => {
+      const index = state.notes.indexOf(note);
+      const newArrayEditedNote = state.notes.toSpliced(index, 1, note);
+      useLocalStorageAddNote(newArrayEditedNote);
+      return { notes: newArrayEditedNote };
+    }),
   remove: (note) =>
     set((state) => {
       const index = state.notes.indexOf(note);

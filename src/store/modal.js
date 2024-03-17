@@ -2,13 +2,15 @@ import { create } from "zustand";
 
 export const useModalStore = create((set) => ({
   isModalOpen: false,
+  isNewNoteModalOpen: false,
+  isEditNoteModalOpen: false,
 
-  openModal: () =>
-    set(() => {
-      return { isModalOpen: true };
+  openModal: (modal) =>
+    set((state) => {
+      return { [modal]: true };
     }),
-  closeModal: () =>
-    set(() => {
-      return { isModalOpen: false };
+  closeModal: (modal) =>
+    set((state) => {
+      return { [modal]: false };
     }),
 }));

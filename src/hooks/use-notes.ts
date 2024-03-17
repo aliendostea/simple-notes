@@ -13,7 +13,7 @@ interface Note {
 
 export default function useNotes() {
   const [isLoading, setIsLoading] = useState(true);
-  const { notes, getNotes, add, remove } = useNotesStore();
+  const { notes, getNotes, add, edit, remove } = useNotesStore();
 
   const getNotesFromStore = async () => {
     setIsLoading(true);
@@ -36,5 +36,12 @@ export default function useNotes() {
     remove(note);
   };
 
-  return { notes, isLoading, getNotesFromStore, handleAddNote: add, removeNoteFromStore } as const;
+  return {
+    notes,
+    isLoading,
+    getNotesFromStore,
+    handleAddNote: add,
+    handleEditNote: edit,
+    removeNoteFromStore,
+  } as const;
 }

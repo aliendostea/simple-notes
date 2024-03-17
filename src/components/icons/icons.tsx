@@ -8,7 +8,7 @@ export default function IconEmptyNotes() {
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 50 50"
-      enable-background="new 0 0 50 50"
+      enableBackground="new 0 0 50 50"
     >
       <path
         d="M36,40.301c0.552,0,1-0.447,1-1v-24.6c0-0.022-0.011-0.041-0.013-0.063c-0.006-0.09-0.023-0.177-0.053-0.262
