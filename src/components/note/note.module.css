@@ -1,3 +1,7 @@
+.note-parent {
+  position: relative;
+}
+
 .skeleton {
   display: block;
   height: 6rem;
@@ -65,13 +69,29 @@
 }
 
 .options {
-  display: grid;
   width: 7rem;
-  height: 3rem;
-  background-color: #505253;
+  display: grid;
+  gap: 3px;
+  padding: 10px 6px;
+  border-radius: 5px;
+  background-color: #47606c;
   position: absolute;
-  top: 0;
-  right: 10px;
+  top: -33px;
+  right: 24px;
+}
+
+.options span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.options span:hover {
+  background-color: hsla(208, 100%, 97%, 0.22);
 }
 
 @keyframes shine {

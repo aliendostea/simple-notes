@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import useNotes from "@/hooks/use-notes";
 import { SearchBar } from "../searchBar";
 import { Note, NoteSkeleton } from "../note";
-import styles from "./listNotes.module.css";
 import { IconEmptyNotes } from "../icons";
+import { PortalModal } from "../modal";
+import styles from "./listNotes.module.css";
 
 interface NoteProps {
   id: string;
@@ -32,7 +33,7 @@ export default function ListNotes() {
   const [inputSearch, setInputSearch] = useState("");
   const { notes, isLoading, getNotesFromStore, removeNoteFromStore } = useNotes();
 
-  const handleOnClick = (note: NoteProps) => {
+  const handleOnClickRemoveNote = (note: NoteProps) => {
     removeNoteFromStore(note);
   };
   const handleOnChange = (e: any) => {
@@ -65,7 +66,12 @@ export default function ListNotes() {
       <div className={styles.grid}>
         {!isLoading &&
           notesFiltered?.map((note: NoteProps) => (
-            <Note key={note.id} title={note.title} note={note.note} onClick={() => handleOnClick(note)} />
+            <Note
+              key={note.id}
+              title={note.title}
+              note={note.note}
+              onClickRemoveNote={() => handleOnClickRemoveNote(note)}
+            />
           ))}
         {isLoading && notesFiltered.length === 0 && (
           <>
@@ -82,6 +88,10 @@ export default function ListNotes() {
         )}
         {emptyArrayNotesOnSearch && <EmptyNotesContainer text="We didn't find any note with that title or name" />}
       </div>
+
+      <PortalModal selector="modal-portal" show={true}>
+        <div>MODAALL!!</div>
+      </PortalModal>
     </div>
   );
 }
