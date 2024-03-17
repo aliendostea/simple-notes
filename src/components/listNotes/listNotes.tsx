@@ -55,6 +55,9 @@ export default function ListNotes() {
     getData();
   }, []);
 
+  const emptyArrayNotes = !isLoading && inputSearch.length === 0 && notesFiltered.length === 0;
+  const emptyArrayNotesOnSearch = !isLoading && inputSearch.length > 0 && notesFiltered.length === 0;
+
   return (
     <div className={styles.parent}>
       <SearchBar value={inputSearch} onChange={handleOnChange} onClickReset={handleResetInputSearch} />
@@ -72,14 +75,12 @@ export default function ListNotes() {
           </>
         )}
 
-        {!isLoading && inputSearch.length === 0 && notesFiltered.length === 0 && (
+        {emptyArrayNotes && (
           <EmptyNotesContainer text="You don't have notes yet. Write your first note started">
             <IconEmptyNotes />
           </EmptyNotesContainer>
         )}
-        {!isLoading && inputSearch.length > 0 && notesFiltered.length === 0 && (
-          <EmptyNotesContainer text="We didn't find any note with that title or name" />
-        )}
+        {emptyArrayNotesOnSearch && <EmptyNotesContainer text="We didn't find any note with that title or name" />}
       </div>
     </div>
   );

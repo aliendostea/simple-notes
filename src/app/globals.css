@@ -41,5 +41,10 @@ a {
 }
 
 button {
+  width: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
   cursor: pointer;
 }

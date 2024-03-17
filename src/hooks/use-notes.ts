@@ -19,9 +19,6 @@ export default function useNotes() {
     setIsLoading(true);
 
     try {
-      //   await Promise.resolve().then(function () {
-      //     getNotes();
-      //   });
       await new Promise(function (resolve) {
         setTimeout(() => {
           resolve("The sum of all data is 100.");

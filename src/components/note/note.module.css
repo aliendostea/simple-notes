@@ -19,6 +19,61 @@
   opacity: 0.2;
 }
 
+.dots {
+  width: 1rem;
+  height: 2rem;
+  display: grid;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.dots:hover {
+  background-color: rgba(0, 0, 0, 0.137);
+}
+
+.span-dots {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  display: block;
+  background-color: rgb(105, 105, 105);
+  border-radius: 50%;
+  position: relative;
+}
+
+.span-dots::after,
+.span-dots::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  display: block;
+  background-color: rgb(105, 105, 105);
+  border-radius: 50%;
+  position: absolute;
+  top: 9px;
+}
+
+.span-dots::after {
+  top: 18px;
+}
+
+.options {
+  display: grid;
+  width: 7rem;
+  height: 3rem;
+  background-color: #505253;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
 @keyframes shine {
   to {
     background-position: right -40px top 0;

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { FormEvent } from "react";
 import useNotes from "@/hooks/use-notes";
+import { useModalStore } from "@/store/modal";
 import { Text, Button } from "@radix-ui/themes";
 import { Form } from "../form";
 import styles from "./newNote.module.css";
@@ -10,11 +11,14 @@ const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
 
 export default function NewNote() {
-  const [isModalActive, setIsModalActive] = useState(false);
+  const { isModalOpen, openModal, closeModal } = useModalStore();
   const { handleAddNote } = useNotes();
 
-  const handleOnClick = () => {
-    setIsModalActive((prevState) => !prevState);
+  const handleOnClickOpenModal = () => {
+    openModal();
+  };
+  const handleOnClickCloseModal = () => {
+    closeModal();
   };
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -40,16 +44,16 @@ export default function NewNote() {
     };
     handleAddNote(newNote);
     form.reset();
-    setIsModalActive(false);
+    closeModal();
   };
 
   return (
     <div>
-      <Button size="3" onClick={handleOnClick}>
+      <Button size="3" onClick={handleOnClickOpenModal}>
         Add new note
       </Button>
 
-      {isModalActive && (
+      {isModalOpen && (
         <div className={styles.modal}>
           <Form onSubmit={handleOnSubmit}>
             <Button
@@ -57,7 +61,7 @@ export default function NewNote() {
               variant="soft"
               color="ruby"
               style={{ position: "absolute", top: 0, right: 0 }}
-              onClick={handleOnClick}
+              onClick={handleOnClickCloseModal}
             >
               <Text as="span" color="ruby" size="3">
                 x
