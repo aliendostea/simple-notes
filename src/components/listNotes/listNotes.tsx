@@ -91,7 +91,6 @@ export default function ListNotes() {
       dateEdited: "",
       pinned: false,
     };
-
     handleEditNote(editedNote);
 
     form.reset();
@@ -119,7 +118,7 @@ export default function ListNotes() {
   const emptyArrayNotesOnSearch = !isLoading && inputSearch.length > 0 && notesFiltered.length === 0;
 
   return (
-    <div className={styles.parent}>
+    <div key="parent-list-notes" className={styles.parent}>
       <SearchBar value={inputSearch} onChange={handleOnChange} onClickReset={handleResetInputSearch} />
 
       <div className={styles.grid}>

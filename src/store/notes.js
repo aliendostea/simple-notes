@@ -19,36 +19,6 @@ import { create } from "zustand";
 // };
 const LOCAL_STORAGE_NOTES = "notes";
 
-// const NOTES: Note[] = [
-//   {
-//     id: "11",
-//     title: "Note 1",
-//     note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rem quam asperiores, minus, dolor expedita odit molestias sequi, dolorem deleniti possimus sapiente aliquid eos veritatis tenetur! Necessitatibus praesentium sed itaque.",
-//     dateCreated: "",
-//     dateDeleted: "",
-//     dateEdited: "",
-//     pinned: false,
-//   },
-//   {
-//     id: "22",
-//     title: "Note 2",
-//     note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rem quam asperiores, minus, dolor expedita odit molestias sequi, dolorem deleniti possimus sapiente aliquid eos veritatis tenetur! Necessitatibus praesentium sed itaque.",
-//     dateCreated: "",
-//     dateDeleted: "",
-//     dateEdited: "",
-//     pinned: false,
-//   },
-//   {
-//     id: "33",
-//     title: "Note 3",
-//     note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rem quam asperiores, minus, dolor expedita odit molestias sequi, dolorem deleniti possimus sapiente aliquid eos veritatis tenetur! Necessitatibus praesentium sed itaque.",
-//     dateCreated: "",
-//     dateDeleted: "",
-//     dateEdited: "",
-//     pinned: false,
-//   },
-// ];
-
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key) ?? "[]");
 }
@@ -79,7 +49,8 @@ export const useNotesStore = create((set) => ({
     }),
   edit: (note) =>
     set((state) => {
-      const index = state.notes.indexOf(note);
+      const index = state.notes.findIndex((noteTofind) => noteTofind.id === note.id);
+
       const newArrayEditedNote = state.notes.toSpliced(index, 1, note);
       useLocalStorageAddNote(newArrayEditedNote);
       return { notes: newArrayEditedNote };

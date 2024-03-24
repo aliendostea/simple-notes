@@ -24,21 +24,23 @@
 }
 
 .dots {
-  width: 1rem;
+  width: 1.2rem;
   height: 2rem;
   display: grid;
   border: none;
   outline: none;
   cursor: pointer;
+  padding: 5px 7px;
   background-color: transparent;
-  position: absolute;
-  top: 5px;
-  right: 6px;
+  border-radius: 4px;
   transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 8px;
+  right: 6px;
 }
 
 .dots:hover {
-  background-color: rgba(0, 0, 0, 0.137);
+  background-color: rgba(172, 169, 169, 0.14);
 }
 
 .span-dots {
