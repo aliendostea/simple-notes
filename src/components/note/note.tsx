@@ -1,9 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, Text } from "@radix-ui/themes";
 import styles from "./note.module.css";
 
-function NotesOptions({ children }: { children: JSX.Element[] }) {
-  return <div className={styles.options}>{children}</div>;
+function NotesOptions({
+  children,
+  setIsOptionsVisible,
+}: {
+  children: JSX.Element[];
+  setIsOptionsVisible: (bool: boolean) => void;
+}) {
+  useEffect(() => {
+    const onPageClick = (e: any) => {
+      document.getElementById("note-options-popup");
+      if (e.target.id !== "note-options-popup") {
+        setIsOptionsVisible(false);
+      }
+    };
+
+    document.addEventListener("click", onPageClick);
+
+    return () => {
+      document.removeEventListener("click", onPageClick);
+    };
+  }, []);
+
+  return (
+    <div id="note-options-popup" className={styles.options}>
+      {children}
+    </div>
+  );
 }
 
 export default function Note({
@@ -23,8 +48,18 @@ export default function Note({
     setIsOptionsVisible((prevState) => !prevState);
   };
 
+  const handleOnClickEditNote = () => {
+    onClickEditNote();
+    setIsOptionsVisible(false);
+  };
+
+  const handleOnClickRemoveNote = () => {
+    onClickRemoveNote();
+    setIsOptionsVisible(false);
+  };
+
   return (
-    <div className={styles["note-parent"]}>
+    <div id="note-parent" className={styles["note-parent"]} data-testid="note-parent">
       <Card variant="surface" style={{ position: "relative" }} data-testid="note-element">
         <Text as="div" size="3" weight="bold">
           {title}
@@ -37,9 +72,13 @@ export default function Note({
         </button>
       </Card>
       {isOptionsVisible && (
-        <NotesOptions>
-          <button onClick={onClickEditNote}>Edit note</button>
-          <button onClick={onClickRemoveNote}>Remove</button>
+        <NotesOptions setIsOptionsVisible={setIsOptionsVisible}>
+          <button key="btn-edit-note" onClick={handleOnClickEditNote}>
+            Edit note
+          </button>
+          <button key="btn-remove-note" onClick={handleOnClickRemoveNote}>
+            Remove
+          </button>
         </NotesOptions>
       )}
     </div>
