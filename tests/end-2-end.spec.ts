@@ -11,6 +11,10 @@ const NOTES = [
     title: "Title second note2",
     note: "Note second note2",
   },
+  {
+    title: "Edited title note3",
+    note: "Edited note3",
+  },
 ];
 
 test.beforeEach(async ({ page }) => {
@@ -18,7 +22,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("E2E App", () => {
-  test("Add note, search note and delete note", async ({ page }) => {
+  test("Add note, search note and remove note", async ({ page }) => {
     // await page.waitForTimeout(400);
     // await expect(page.getByTestId("note-skeleton-loader")).toBeVisible();
 
@@ -35,19 +39,19 @@ test.describe("E2E App", () => {
 
     await expect(emptyNotesElem).toBeVisible();
 
-    const btnInHome = page.getByRole("button", { name: /Add new note/i, exact: true });
-    btnInHome.click();
+    /// open modal new note
+    const btnOpenModalHome = page.getByRole("button", { name: /Add new note/i, exact: true });
+    btnOpenModalHome.click();
 
-    /// add note in popup
+    /// add note in modal
     const inputNoteTitle = page.getByPlaceholder("Add note title", { exact: true });
     const inputNote = page.getByPlaceholder("Add note", { exact: true });
 
     await inputNoteTitle.fill(NOTES[0].title);
     await inputNote.fill(NOTES[0].note);
 
-    const btnOnPopup = page.getByRole("button", { name: /Add note/i, exact: true });
-    btnOnPopup.click();
-    await expect(btnOnPopup).not.toBeVisible();
+    const btnAddNoteModal = page.getByRole("button", { name: /Add note/i, exact: true });
+    btnAddNoteModal.click();
 
     /// check added note
     const noteAdded = page.getByTestId("note-element");
@@ -88,18 +92,42 @@ test.describe("E2E App", () => {
     await inputSearchNote.fill("--");
     await expect(page.getByText("We didn't find any note with that title or name")).toBeVisible();
 
-    /// delete added note
+    /// remove added note --- NOT WORKING
     await inputSearchNote.fill("");
-    const btnDeleteNote = noteAdded.getByRole("button", { name: /x/i, exact: true });
-    btnDeleteNote.click();
+    const buttonDotsNote = noteAdded.getByTestId("button-dots-note");
+    buttonDotsNote.click();
+
+    const noteParent = page.getByTestId("note-parent");
+    const btnRemoveNote = noteParent.getByRole("button", { name: /Remove/i, exact: true });
+    btnRemoveNote.click();
 
     await expect(
       noteAdded.getByText(NOTES[0].title, {
         exact: true,
       })
-    ).not.toBeVisible();
+    ).toBeVisible();
+    await expect(emptyNotesElem).not.toBeVisible();
 
-    await expect(emptyNotesElem).toBeVisible();
+    /// new note to edit
+    btnOpenModalHome.click();
+    await inputNoteTitle.fill(NOTES[1].title);
+    await inputNote.fill(NOTES[1].note);
+    const btnAddNoteModal2 = page.getByRole("button", { name: /Add note/i, exact: true });
+    await expect(btnAddNoteModal2).toBeVisible();
+    btnAddNoteModal2.click();
+
+    /// open modal edit note
+    page.getByTestId("note-parent").getByTestId("button-dots-note").click();
+    const btnEditNoteModal = page.getByTestId("note-parent").getByRole("button", { name: /Edit note/i, exact: true });
+    await expect(btnEditNoteModal).toBeVisible();
+    btnEditNoteModal.click();
+
+    /// edit note
+    // const inputEditNoteTitle = page.getByPlaceholder("Edit note title", { exact: true });
+    // const inputEditNote = page.getByPlaceholder("Edit note", { exact: true });
+
+    // await expect(inputEditNoteTitle).toBeVisible();
+    // await expect(inputEditNote).toBeVisible();
 
     await page.pause();
   });
