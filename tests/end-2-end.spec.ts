@@ -123,11 +123,13 @@ test.describe("E2E App", () => {
     btnEditNoteModal.click();
 
     /// edit note
-    // const inputEditNoteTitle = page.getByPlaceholder("Edit note title", { exact: true });
-    // const inputEditNote = page.getByPlaceholder("Edit note", { exact: true });
+    await expect(page.getByText("Edit note")).toBeVisible();
 
-    // await expect(inputEditNoteTitle).toBeVisible();
-    // await expect(inputEditNote).toBeVisible();
+    const inputEditNoteTitle = page.getByPlaceholder("Edit note title", { exact: true });
+    const inputEditNote = page.getByPlaceholder("Edit note", { exact: true });
+
+    await expect(inputEditNoteTitle).toBeVisible();
+    await expect(inputEditNote).toBeVisible();
 
     await page.pause();
   });

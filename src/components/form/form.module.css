@@ -1,7 +1,8 @@
 .box {
-  width: 23rem;
+  width: 100%;
   display: grid;
   gap: 1rem;
+  justify-self: center;
   background-color: #121b1e;
   padding: 2rem 3rem;
   border-radius: 15px;
