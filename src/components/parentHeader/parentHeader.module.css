@@ -1,0 +1,15 @@
+.parent {
+  width: 100%;
+  display: grid;
+  font-family: var(--font-mono);
+}
+
+.parent h1 {
+  line-height: 1.2;
+}
+
+@media only screen and (width <= 27.75em) {
+  .parent h1 {
+    font-size: 1.4rem;
+  }
+}

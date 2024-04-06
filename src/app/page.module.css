@@ -10,6 +10,12 @@
   }
 }
 
+@media only screen and (width <= 27.75em) {
+  .main {
+    padding: 1rem;
+  }
+}
+
 .description {
   width: 100%;
   display: grid;

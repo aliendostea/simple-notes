@@ -49,7 +49,7 @@ export default function NewNote() {
 
   return (
     <div>
-      <Button size="3" onClick={handleOnClickOpenModal}>
+      <Button style={{ whiteSpace: "nowrap" }} size="3" onClick={handleOnClickOpenModal}>
         Add new note
       </Button>
 
@@ -70,24 +70,6 @@ export default function NewNote() {
           </Form>
         </WrapperModal>
       </PortalModal>
-
-      {/* {isModalOpen && (
-        <div className={styles.modal}>
-          <Form onSubmit={handleOnSubmit}>
-            <Button
-              size="3"
-              variant="soft"
-              color="ruby"
-              style={{ position: "absolute", top: 0, right: 0 }}
-              onClick={handleOnClickCloseModal}
-            >
-              <Text as="span" color="ruby" size="3">
-                x
-              </Text>
-            </Button>
-          </Form>
-        </div>
-      )} */}
     </div>
   );
 }

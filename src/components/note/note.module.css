@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.note-parent > div > div {
+  padding-right: 20px;
+}
+
 .skeleton {
   display: block;
   height: 6rem;
@@ -73,20 +77,26 @@
 .options {
   width: 7rem;
   display: grid;
-  gap: 3px;
-  padding: 10px 6px;
+  gap: 5px;
+  padding: 13px 8px;
   border-radius: 5px;
-  background-color: #47606c;
+  background-color: #3f4549;
+  box-shadow: 1px 17px 27px hsl(0, 0%, 0%);
   position: absolute;
   top: -33px;
   right: 24px;
+}
+
+@media only screen and (width <= 56.25em) {
+  .options {
+  }
 }
 
 .options button {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
-  padding: 2px 8px;
+  padding: 6px 8px;
   border-radius: 3px;
   text-align: left;
   font-weight: 500;
@@ -96,9 +106,17 @@
   cursor: pointer;
   outline: none;
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .options button:hover {
+  outline: none;
+  background-color: hsla(208, 100%, 97%, 0.22);
+}
+
+.options button:active {
+  outline: none;
   background-color: hsla(208, 100%, 97%, 0.22);
 }
 

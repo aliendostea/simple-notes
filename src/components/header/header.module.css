@@ -5,6 +5,12 @@
   padding-bottom: 4rem;
 }
 
+@media only screen and (width <= 27.75em) {
+  .header {
+    padding-bottom: 2rem;
+  }
+}
+
 .header > span {
   align-self: center;
 }

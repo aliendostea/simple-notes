@@ -3,7 +3,7 @@
   display: grid;
   gap: 1rem;
   justify-self: center;
-  background-color: #121b1e;
+  background-color: #1c2529;
   padding: 2rem 3rem;
   border-radius: 15px;
   position: relative;
@@ -11,4 +11,10 @@
 .form {
   display: grid;
   gap: 1rem;
+}
+
+@media only screen and (width <= 27.75em) {
+  .box {
+    padding: 2rem;
+  }
 }
