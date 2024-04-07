@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { useNotesStore } from "@/store/notes";
 
 interface Note {
@@ -34,14 +35,25 @@ export default function useNotes() {
 
   const removeNoteFromStore = (note: Note) => {
     remove(note);
+    toast.success("Your note has been deleted");
+  };
+
+  const addNoteFromStore = (note: Note) => {
+    add(note);
+    toast.success("Your note has been created");
+  };
+
+  const editNoteFromStore = (note: Note) => {
+    edit(note);
+    toast.success("Your note has been edited");
   };
 
   return {
     notes,
     isLoading,
     getNotesFromStore,
-    handleAddNote: add,
-    handleEditNote: edit,
+    handleAddNote: addNoteFromStore,
+    handleEditNote: editNoteFromStore,
     removeNoteFromStore,
   } as const;
 }
