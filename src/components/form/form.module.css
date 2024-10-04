@@ -10,11 +10,23 @@
 }
 .form {
   display: grid;
+  grid-template-rows: min-content minmax(10rem, calc(100lvh - 20rem)) min-content;
   gap: 1rem;
+}
+
+.box-textarea > div {
+  height: calc(100% - 20px);
+}
+
+.box-textarea textarea {
+  width: 100%;
+  height: calc(100% - 20px);
+  box-sizing: border-box;
+  line-height: 1.5;
 }
 
 @media only screen and (width <= 27.75em) {
   .box {
-    padding: 2rem;
+    padding: 1rem 10px;
   }
 }

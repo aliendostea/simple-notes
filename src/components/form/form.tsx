@@ -21,16 +21,23 @@ export default function Form({
             <Text as="span" size="3" weight="bold">
               Title
             </Text>
-            <TextField.Input id="new-title" type="text" placeholder="Add note title" name="title" radius="large" />
+            <TextField.Input
+              id="new-title"
+              type="text"
+              placeholder="Add note title"
+              name="title"
+              radius="large"
+              size="3"
+            />
           </label>
         </div>
-        <div>
+        <div className={styles["box-textarea"]}>
           <label htmlFor="new-note">
             <Text as="span" size="3" weight="bold">
               Note
             </Text>
-            <TextArea variant="classic" id="new-note" placeholder="Add note" name="note" size="3" />
           </label>
+          <TextArea variant="classic" id="new-note" placeholder="Add note" name="note" size="3" />
         </div>
         <Button size="3">Add note</Button>
       </form>

@@ -61,10 +61,10 @@ export default function Note({
   return (
     <div id="note-parent" className={styles["note-parent"]} data-testid="note-parent">
       <Card variant="surface" style={{ position: "relative" }} data-testid="note-element">
-        <Text as="div" size="3" weight="bold">
+        <Text as="span" size="3" weight="bold">
           {title}
         </Text>
-        <Text as="div" color="gray" size="2">
+        <Text as="p" color="gray" size="2" style={{ whiteSpace: "pre-line" }}>
           {note}
         </Text>
         <button className={styles.dots} onClick={handleOnClickOpenOptions} data-testid="button-dots-note">

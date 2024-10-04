@@ -42,23 +42,24 @@ export default function FormEditNote({
               placeholder="Edit note title"
               name="title"
               radius="large"
+              size="3"
             />
           </label>
         </div>
-        <div>
+        <div className={styles["box-textarea"]}>
           <label htmlFor="edit-note">
             <Text as="span" size="3" weight="bold">
               Edit note
             </Text>
-            <TextArea
-              variant="classic"
-              id="edit-note"
-              defaultValue={valueNote}
-              placeholder="Edit note"
-              name="note"
-              size="3"
-            />
           </label>
+          <TextArea
+            variant="classic"
+            id="edit-note"
+            defaultValue={valueNote}
+            placeholder="Edit note"
+            name="note"
+            size="3"
+          />
         </div>
         <Button size="3">Edit this note</Button>
       </form>

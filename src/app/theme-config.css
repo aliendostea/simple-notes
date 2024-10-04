@@ -1,4 +1,16 @@
 .radix-themes {
   --cursor-button: pointer;
   --cursor-checkbox: pointer;
+  --color-panel: #292b2eb3;
+}
+
+:root {
+  --b-mini-phone: 23.75em;
+  --b-phone: 37.5em;
+  --b-tab-port: 56.25em;
+  --b-between-pc-and-tab-port: 71.875em;
+  --b-tab-land: 80em;
+  --b-tab-between-land-desktop: 100em;
+  --b-big-desktop: 112.5em;
+  --b-test-desktop: @media only screen and;
 }

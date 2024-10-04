@@ -24,6 +24,7 @@ export default function SearchBar({
           value={value}
           onChange={onChange}
           radius="large"
+          size="3"
         />
       </label>
       <Button size="1" variant="soft" color="ruby" onClick={onClickReset}>
