@@ -11,7 +11,9 @@ const ParentHeader = () => {
   return (
     <div className={styles.parent}>
       <Header />
-      <h1 className="text-3xl font-bold underline">Hey, {letters} </h1>
+      <h1 className="text-3xl font-bold underline" style={{ color: "#424242" }}>
+        Hey, {letters}{" "}
+      </h1>
     </div>
   );
 };

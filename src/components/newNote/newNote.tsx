@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import useNotes from "@/hooks/use-notes";
 import { useModalStore } from "@/store/modal";
 import { PortalModal, WrapperModal } from "../modal";
@@ -11,6 +11,7 @@ const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
 
 export default function NewNote() {
+  const [errorInputs, setErrorInputs] = useState({ [INPUT_TITLE]: false, [INPUT_NOTE]: false });
   const { isNewNoteModalOpen, openModal, closeModal } = useModalStore();
   const { handleAddNote } = useNotes();
 
@@ -28,9 +29,16 @@ export default function NewNote() {
     const formData = new FormData(form);
     const title = formData.get(INPUT_TITLE) as string;
     const note = formData.get(INPUT_NOTE) as string;
-    if (title === "") {
+    const titleError = title === "";
+    const noteError = note === "";
+    const isInputEmpty = [titleError, noteError].find((element) => element);
+
+    if (isInputEmpty) {
+      setErrorInputs({ [INPUT_TITLE]: titleError, [INPUT_NOTE]: noteError });
       return;
     }
+
+    setErrorInputs({ [INPUT_TITLE]: false, [INPUT_NOTE]: false });
     const id = window.crypto.randomUUID();
 
     const newNote = {
@@ -55,7 +63,7 @@ export default function NewNote() {
 
       <PortalModal selector="modal-portal" show={isNewNoteModalOpen}>
         <WrapperModal>
-          <Form onSubmit={handleOnSubmit}>
+          <Form errorInputs={errorInputs} onSubmit={handleOnSubmit}>
             <Button
               size="3"
               variant="soft"
