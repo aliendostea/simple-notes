@@ -137,7 +137,7 @@ export default function Form({
 
           {currentInputTypeTabs === INPUT_TYPES.checklist && (
             <div>
-              <Button type="button" variant="soft" color="cyan" size="1" onClick={handleAddInput} my="1">
+              <Button type="button" variant="soft" color="cyan" size="1" onClick={handleAddInput} mb="3">
                 Add new checkbox
               </Button>
               <div className={styles["box-checklist"]}>

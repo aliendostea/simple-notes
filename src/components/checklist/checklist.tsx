@@ -93,16 +93,11 @@ ChecklistPropsComponent) {
           {title}
         </Text>
         {checklist.map((item) => (
-          <Flex key={`${item.id}`} direction="column" gap="4">
-            <Text as="label" size="2">
+          <Flex key={`${item.id}`} direction="column" gap="4" mt="2">
+            <Text as="label" size="2" style={{ cursor: "pointer" }}>
               {/* the onChange is NOT working in this Checkbox comp :/ */}
-              <Checkbox
-                size="1"
-                color="cyan"
-                onClick={() => handleCheckboxChange(item.id)}
-                checked={item.checked}
-              />{" "}
-              {item.value}
+              <Checkbox size="3" color="cyan" onClick={() => handleCheckboxChange(item.id)} checked={item.checked} />
+              <span style={{ marginLeft: "8px", cursor: "pointer" }}>{item.value}</span>
             </Text>
           </Flex>
         ))}

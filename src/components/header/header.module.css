@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  padding-bottom: 4rem;
+  padding-bottom: 1rem;
 }
 
 @media only screen and (width <= 27.75em) {
