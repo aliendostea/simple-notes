@@ -1,16 +1,7 @@
 import { FormEvent } from "react";
 import { Text, TextField, TextArea, Button } from "@radix-ui/themes";
 import styles from "./form.module.css";
-
-interface NoteProps {
-  id: string;
-  title: string;
-  note: string;
-  dateCreated: string;
-  dateDeleted: string;
-  dateEdited: string;
-  pinned: boolean;
-}
+import { Note as NoteProps } from "@/const";
 
 export default function FormEditNote({
   note,

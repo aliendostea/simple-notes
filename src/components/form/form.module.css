@@ -1,8 +1,10 @@
 .box {
   width: 100%;
+  min-height: 24rem;
   display: grid;
   gap: 1rem;
   justify-self: center;
+  align-content: start;
   background-color: #1c2529;
   padding: 2rem 3rem;
   border-radius: 15px;
@@ -10,7 +12,7 @@
 }
 .form {
   display: grid;
-  grid-template-rows: min-content minmax(10rem, calc(100lvh - 20rem)) min-content;
+  /* grid-template-rows: min-content minmax(10rem, calc(100lvh - 20rem)) min-content; */
   gap: 1rem;
 }
 
@@ -25,6 +27,18 @@
   line-height: 1.5;
 }
 
+.box-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 0.7rem;
+}
+
+.box-checklist > div {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+}
+
 @media only screen and (width < 900px) {
   .box {
     padding: 1.4rem;
@@ -35,4 +49,32 @@
   .box {
     padding: 1rem 10px;
   }
+}
+
+.btnTabs {
+  all: unset;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.91rem;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: hsl(227deg 12.23% 25.02% / 22%);
+  border-radius: max(var(--radius-3));
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  cursor: pointer;
+}
+
+.box-tabs {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid hsla(0, 0%, 31%, 0.78);
+}
+
+.active {
+  background-color: hsl(227deg 15% 36% / 28%);
+  border-bottom: 1px solid #5472e4;
 }

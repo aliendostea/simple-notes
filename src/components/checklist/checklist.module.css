@@ -1,0 +1,101 @@
+.checklist-parent {
+  position: relative;
+}
+
+.checklist-parent > div > div {
+  padding-right: 20px;
+}
+
+.dots {
+  width: 1.2rem;
+  height: 2rem;
+  display: grid;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 7px;
+  background-color: transparent;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 10px;
+  right: 6px;
+}
+
+.dots:hover {
+  background-color: rgba(172, 169, 169, 0.14);
+}
+
+.span-dots {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  display: block;
+  background-color: rgb(105, 105, 105);
+  border-radius: 50%;
+  position: relative;
+}
+
+.span-dots::after,
+.span-dots::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  display: block;
+  background-color: rgb(105, 105, 105);
+  border-radius: 50%;
+  position: absolute;
+  top: 9px;
+}
+
+.span-dots::after {
+  top: 18px;
+}
+
+.options {
+  width: 7rem;
+  display: grid;
+  gap: 5px;
+  padding: 13px 8px;
+  border-radius: 5px;
+  background-color: #3f4549;
+  box-shadow: 1px 17px 27px hsl(0, 0%, 0%);
+  position: absolute;
+  top: -33px;
+  right: 24px;
+}
+
+.options button {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 3px;
+  text-align: left;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.options button:hover {
+  outline: none;
+  background-color: hsla(208, 100%, 97%, 0.22);
+}
+
+.options button:active {
+  outline: none;
+  background-color: hsla(208, 100%, 97%, 0.22);
+}
+
+@keyframes shine {
+  to {
+    background-position: right -40px top 0;
+  }
+}

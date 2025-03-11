@@ -1,16 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { useNotesStore } from "@/store/notes";
-
-interface Note {
-  id: string;
-  title: string;
-  note: string;
-  dateCreated: string;
-  dateDeleted: string;
-  dateEdited: string;
-  pinned: boolean;
-}
+import { ChecklistProps, Note } from "@/const";
 
 export default function useNotes() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +24,7 @@ export default function useNotes() {
     }
   };
 
-  const removeNoteFromStore = (note: Note) => {
+  const removeNoteFromStore = (note: Note | ChecklistProps) => {
     remove(note);
     toast.success("Your note has been deleted");
   };
@@ -43,9 +34,18 @@ export default function useNotes() {
     toast.success("Your note has been created");
   };
 
-  const editNoteFromStore = (note: Note) => {
+  const addChecklistFromStore = (checklistNote: ChecklistProps) => {
+    add(checklistNote);
+    toast.success("Your checklist has been created");
+  };
+
+  const editNoteFromStore = (note: Note | ChecklistProps) => {
     edit(note);
     toast.success("Your note has been edited");
+  };
+
+  const editChecklistFromStore = (note: Note | ChecklistProps) => {
+    edit(note);
   };
 
   return {
@@ -53,7 +53,9 @@ export default function useNotes() {
     isLoading,
     getNotesFromStore,
     handleAddNote: addNoteFromStore,
+    handleAddChecklist: addChecklistFromStore,
     handleEditNote: editNoteFromStore,
+    handleEditChecklist: editChecklistFromStore,
     removeNoteFromStore,
   } as const;
 }
