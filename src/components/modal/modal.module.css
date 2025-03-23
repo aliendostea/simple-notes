@@ -4,6 +4,8 @@
   display: grid;
   grid-template-columns: minmax(20rem, 30rem);
   place-content: center;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
   background-color: #121b1e79;
   position: fixed;
   top: 0;

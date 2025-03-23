@@ -6,7 +6,7 @@ import { useModalStore } from "@/store/modal";
 import { SearchBar } from "../searchBar";
 import { Note, NoteSkeleton } from "../note";
 import { PortalModal, WrapperModal } from "../modal";
-import { FormEditNote } from "../form";
+import { FormEditChecklistNote, FormEditNote } from "../form";
 import { IconEmptyNotes } from "../icons";
 import { Text, Button } from "@radix-ui/themes";
 import { Checklist } from "../checklist";
@@ -19,71 +19,6 @@ const INPUT_NOTE = "note";
 const INPUT_TYPES = { simpleNotes: "simpleNotes", checklist: "checklist" };
 const arrayNoteSkeleton = Array.from(Array(8).keys());
 
-/*
-function LikesApp() {
-  const [likes, setLikes] = useState(0);
-  async function addLikeToDB() {
-    try {
-      const response = await fetch("http://localhost:1234/api/likes/v1/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ like: 1, app: "simple-notes" }),
-      });
-
-      const res = await response.json();
-
-      if (!response.ok) {
-        console.log("res", response.status);
-        throw new Error("Error en petición");
-      }
-
-      return res;
-    } catch (error) {
-      console.log("Error occurred", error);
-      throw new Error("Error en petición");
-    }
-  }
-
-  const handleOnClickLikes = () => {
-    addLikeToDB();
-    setLikes((prevState) => prevState + 1);
-  };
-
-  useEffect(() => {
-    async function getLikesFromDB() {
-      try {
-        const response = await fetch("http://localhost:1234/api/likes/v1", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        const res = await response.json();
-        setLikes(res.response.likes);
-
-        if (!response.ok) {
-          console.log("res", response.status);
-          throw new Error("Error en petición");
-        }
-      } catch (error) {
-        console.log("Error occurred", error);
-        throw new Error("Error en petición");
-      }
-    }
-
-    getLikesFromDB();
-  }, []);
-  return (
-    <div>
-      <h1>Likes App {likes}</h1>
-      <button onClick={handleOnClickLikes}>Like</button>
-    </div>
-  );
-}
-*/
 function EmptyNotesContainer({ text, children }: { text: string; children?: JSX.Element }) {
   return (
     <div className={styles.empty}>
@@ -95,16 +30,20 @@ function EmptyNotesContainer({ text, children }: { text: string; children?: JSX.
 
 export default function ListNotes() {
   const [inputSearch, setInputSearch] = useState("");
-  const { isEditNoteModalOpen, closeModal, openModal } = useModalStore();
-  const { handleEditNote } = useNotes();
-  const [noteToEdit, setNoteToEdit] = useState(INIT_NOTE);
   const { notes, isLoading, getNotesFromStore, removeNoteFromStore } = useNotes();
+  const { isEditNoteModalOpen, isEditChecklistModalOpen, closeModal, openModal } = useModalStore();
+  const { handleEditNote } = useNotes();
+  const [noteToEdit, setNoteToEdit] = useState<any>(INIT_NOTE);
 
   const handleOnClickRemoveNote = (note: NoteProps | ChecklistProps) => {
     removeNoteFromStore(note);
   };
-  const handleOnClickEditNote = (note: NoteProps) => {
+  const handleOnClickEditNote = (note: NoteProps | ChecklistProps) => {
     openModal("isEditNoteModalOpen");
+    setNoteToEdit(note);
+  };
+  const handleOnClickEditChecklist = (note: NoteProps | ChecklistProps) => {
+    openModal("isEditChecklistModalOpen");
     setNoteToEdit(note);
   };
   const handleOnChange = (e: any) => {
@@ -113,14 +52,7 @@ export default function ListNotes() {
   const handleResetInputSearch = () => {
     setInputSearch("");
   };
-  /*
-  const notesFiltered = notes.filter((note: NoteProps) => {
-    return (
-      note.title.toLowerCase().search(inputSearch.toLowerCase()) !== -1 ||
-      note.note.toLowerCase().search(inputSearch.toLowerCase()) !== -1
-    );
-  });
-  */
+
   const notesFiltered = notes.filter((note: NoteProps | ChecklistProps) => {
     if (note.type === "simpleNotes") {
       return (
@@ -183,7 +115,7 @@ export default function ListNotes() {
         {!isLoading &&
           notesFiltered?.map((note: any) => {
             // const newNote = note.type === INPUT_TYPES.checklist ? (note as NoteProps) : (note as ChecklistProps);
-            if (note?.type && note?.type === "checklist" && note.type === INPUT_TYPES.checklist) {
+            if (note?.type && note.type === INPUT_TYPES.checklist) {
               const newNote = note as ChecklistProps;
               return (
                 <Checklist
@@ -193,7 +125,7 @@ export default function ListNotes() {
                   title={newNote.title}
                   checklist={newNote.checklist as CheckboxProps[]}
                   onClickRemoveNote={() => handleOnClickRemoveNote(newNote)}
-                  // onClickEditNote={() => handleOnClickEditNote(newNote as NoteProps)}
+                  onClickEditNote={() => handleOnClickEditChecklist(newNote)}
                 />
               );
             }
@@ -224,7 +156,25 @@ export default function ListNotes() {
         {emptyArrayNotesOnSearch && <EmptyNotesContainer text="We didn't find any note with that title or name" />}
       </div>
 
-      <PortalModal selector="modal-portal" show={isEditNoteModalOpen}>
+      <PortalModal key="edit-checklist" selector="modal-portal" show={isEditChecklistModalOpen}>
+        <WrapperModal>
+          <FormEditChecklistNote note={noteToEdit} checkboxList={noteToEdit?.checklist as CheckboxProps[]}>
+            <Button
+              size="3"
+              variant="soft"
+              color="ruby"
+              style={{ position: "absolute", top: 0, right: 0 }}
+              onClick={() => closeModal("isEditChecklistModalOpen")}
+            >
+              <Text as="span" color="ruby" size="3">
+                x
+              </Text>
+            </Button>
+          </FormEditChecklistNote>
+        </WrapperModal>
+      </PortalModal>
+
+      <PortalModal key="edit-note" selector="modal-portal" show={isEditNoteModalOpen}>
         <WrapperModal>
           <FormEditNote onSubmit={handleEditNoteOnSubmit} note={noteToEdit}>
             <Button

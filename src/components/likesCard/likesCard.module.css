@@ -1,0 +1,74 @@
+.card {
+  width: 18.7rem;
+  height: 6rem;
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 11.2rem 1fr;
+  place-content: center;
+  gap: 10px;
+  border-radius: 38px;
+  background-color: hsl(0deg 0% 0% / 53%);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 8px 26px rgb(9 22 27 / 24%);
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: rgb(221, 221, 221);
+  margin: 0;
+}
+
+.btn {
+  width: 2.6rem;
+  padding: 0;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: scale(1.7);
+}
+
+.btn-x {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-content: center;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: rgb(44, 44, 44);
+  background-color: black;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 14px;
+  right: 17px;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(-11px);
+}
+
+.count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: hsla(0, 0%, 100%, 0.31);
+  transition: all 0.2s ease-in-out;
+}
+
+.count--active {
+  color: hsla(348, 76%, 52%, 0.412);
+  transition: all 0.2s ease-in-out;
+}

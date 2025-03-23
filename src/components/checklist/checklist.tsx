@@ -40,19 +40,18 @@ interface ChecklistPropsComponent {
   data: ChecklistProps;
   checklist: CheckboxProps[];
   onClickRemoveNote: () => void;
-  // onClickEditNote: () => void;
+  onClickEditNote: () => void;
 }
 
 export default function Checklist({
   id,
   title,
   data,
-  checklist: initialChecklist,
+  checklist,
   onClickRemoveNote,
-}: // onClickEditNote,
-ChecklistPropsComponent) {
+  onClickEditNote,
+}: ChecklistPropsComponent) {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
-  const [checklist, setChecklist] = useState(initialChecklist);
   const { handleEditChecklist } = useNotes();
 
   const handleToggleOptions = useCallback(() => {
@@ -64,22 +63,11 @@ ChecklistPropsComponent) {
     setIsOptionsVisible(false);
   }, [onClickRemoveNote]);
 
-  /*
-  const handleCheckboxChange = (id: string) => {
-    console.log("id", id);
-
-    const updatedChecklist = checklist.map((item) => (item.id === id ? { ...item, checked: !item.checked } : item));
-    setChecklist(updatedChecklist);
-    handleEditNoteStore({ ...data, checklist: updatedChecklist });
-  };
-  */
-
   const handleCheckboxChange = useCallback(
     (id: string) => {
       const updatedChecklist = checklist.map((item) => (item.id === id ? { ...item, checked: !item.checked } : item));
 
       unstable_batchedUpdates(() => {
-        setChecklist(updatedChecklist);
         handleEditChecklist({ ...data, checklist: updatedChecklist });
       });
     },
@@ -113,7 +101,9 @@ ChecklistPropsComponent) {
       </Card>
       {isOptionsVisible && (
         <ChecklistsOptions setIsOptionsVisible={setIsOptionsVisible}>
-          <button key="btn-edit-checklist">TODO: Edit checklist</button>
+          <button key="btn-edit-checklist" onClick={onClickEditNote}>
+            Edit checklist
+          </button>
           <button key="btn-remove-checklist" onClick={handleRemoveNote}>
             Remove
           </button>
