@@ -6,14 +6,18 @@ import styles from "./parentHeader.module.css";
 
 const ParentHeader = () => {
   const { notes } = useNotes();
-  const letters = notes.length > 0 ? "welcome back!" : "you can add all your notes here!";
+  const showWelcome = notes.length > 0;
+  const letters = showWelcome ? "welcome back!" : "you can add all your notes and to-do lists!";
 
   return (
     <div className={styles.parent}>
       <Header />
-      <h1 className="text-3xl font-bold underline" style={{ color: "#424242" }}>
-        Hey, {letters}{" "}
-      </h1>
+      <h1 className={`${styles.title} ${showWelcome ? styles["title-margin-bottom"] : ""}`}>Hey, {letters} </h1>
+      {showWelcome === false && (
+        <p className={styles.paragraph}>
+          SimpleNotes is a small app for adding notes/text and to-do lists. No ads, for free, no bullshit. Enjoy!
+        </p>
+      )}
     </div>
   );
 };

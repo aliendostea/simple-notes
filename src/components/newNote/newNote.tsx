@@ -7,6 +7,7 @@ import { PortalModal, WrapperModal } from "../modal";
 import { Form } from "../form";
 import { Text, Button } from "@radix-ui/themes";
 import { CheckboxProps, INIT_CHECKBOX_INPUT } from "@/const";
+import { IconNotesPlus } from "../icons/icons";
 
 const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
@@ -104,6 +105,7 @@ export default function NewNote() {
   return (
     <div>
       <Button style={{ whiteSpace: "nowrap" }} size="3" onClick={handleOnClickOpenModal}>
+        <IconNotesPlus />
         Add new note
       </Button>
 

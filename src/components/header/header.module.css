@@ -18,3 +18,9 @@
 .header > div {
   justify-self: end;
 }
+
+.title-logo {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+}

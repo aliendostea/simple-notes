@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Text, TextField, TextArea, Button, Flex, Box } from "@radix-ui/themes";
 import { INIT_CHECKBOX_INPUT } from "@/const";
+import { IconChecklist, IconNotesPlus, IconSimpleNotes, IconX } from "../icons/icons";
 
 import styles from "./form.module.css";
 
@@ -33,6 +34,14 @@ function CheckboxWrapper({ children, errorChecklist }: { children: React.ReactNo
       />
       {children}
     </Flex>
+  );
+}
+
+function BtnCloseX({ onClick }: { onClick: () => void }) {
+  return (
+    <button className={styles["btn-close-x"]} onClick={onClick}>
+      <IconX />
+    </button>
   );
 }
 
@@ -73,7 +82,8 @@ export default function Form({
 
   return (
     <div className={styles.box}>
-      <Text as="span" size="5" weight="bold">
+      <Text as="span" size="5" weight="bold" className={styles["title-add-new-note"]}>
+        <IconNotesPlus />
         Add new note
       </Text>
       {children}
@@ -103,6 +113,7 @@ export default function Form({
             className={`${styles.btnTabs} ${currentInputTypeTabs === INPUT_TYPES.simpleNotes ? styles.active : ""}`}
             onClick={() => handleClickTabs(INPUT_TYPES.simpleNotes)}
           >
+            <IconSimpleNotes width={20} height={20} fill="white" />
             Simple Notes
           </button>
           <button
@@ -110,6 +121,7 @@ export default function Form({
             className={`${styles.btnTabs} ${currentInputTypeTabs === INPUT_TYPES.checklist ? styles.active : ""}`}
             onClick={() => handleClickTabs(INPUT_TYPES.checklist)}
           >
+            <IconChecklist width={20} height={20} fill="white" />
             Checklist
           </button>
         </div>
@@ -144,11 +156,10 @@ export default function Form({
                 {checkboxList.map((item) => {
                   return (
                     <CheckboxWrapper key={item.id} errorChecklist={errorChecklist}>
-                      <Button size="1" variant="soft" color="ruby" onClick={() => handleRemoveInput(item.id)}>
-                        <Text as="span" color="ruby" size="3">
-                          x
-                        </Text>
-                      </Button>
+                      <BtnCloseX onClick={() => handleRemoveInput(item.id)} />
+                      {/* <Button size="1" variant="soft" color="ruby" onClick={() => handleRemoveInput(item.id)}>
+                        <IconX />
+                      </Button> */}
                     </CheckboxWrapper>
                   );
                 })}

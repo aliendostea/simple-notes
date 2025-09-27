@@ -73,7 +73,9 @@
 
 .btnTabs {
   all: unset;
-  display: inline-block;
+  display: flex;
+  align-content: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.91rem;
   padding: 0.3rem 0.5rem;
@@ -97,4 +99,27 @@
 .active {
   background-color: hsl(227deg 15% 36% / 28%);
   border-bottom: 1px solid #5472e4;
+}
+
+.title-add-new-note {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+}
+
+.btn-close-x {
+  all: unset;
+  display: flex;
+  align-content: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.91rem;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: hsla(335, 30%, 20%, 0.705);
+  border-radius: max(var(--radius-3));
+  cursor: pointer;
 }

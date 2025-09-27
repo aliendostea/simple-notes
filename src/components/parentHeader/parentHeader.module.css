@@ -8,6 +8,24 @@
   line-height: 1.2;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(157, 182, 206, 0.58);
+  margin: 0;
+  padding: 0;
+}
+
+.title-margin-bottom {
+  margin-bottom: 0.7rem;
+}
+
+.paragraph {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #627180;
+}
+
 @media only screen and (width <= 27.75em) {
   .parent h1 {
     font-size: 1.4rem;

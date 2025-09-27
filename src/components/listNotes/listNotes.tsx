@@ -149,7 +149,7 @@ export default function ListNotes() {
         )}
 
         {emptyArrayNotes && (
-          <EmptyNotesContainer text="You don't have notes yet. Write your first note started">
+          <EmptyNotesContainer text="You don't have notes yet. Write your first note to get started!">
             <IconEmptyNotes />
           </EmptyNotesContainer>
         )}
