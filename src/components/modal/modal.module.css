@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: minmax(20rem, 30rem);
   place-content: center;
+  padding: 1rem 0;
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   background-color: #121b1e79;
@@ -11,11 +12,13 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 @media only screen and (width <= 56.25em) {
   .wrapper {
     grid-template-columns: minmax(18rem, calc(100% - 4rem));
+    grid-template-rows: 1fr;
   }
 }
 

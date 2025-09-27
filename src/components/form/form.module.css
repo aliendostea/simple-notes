@@ -12,8 +12,19 @@
 }
 .form {
   display: grid;
-  /* grid-template-rows: min-content minmax(10rem, calc(100lvh - 20rem)) min-content; */
+  grid-template-rows: min-content minmax(10rem, min(29rem, 100%)) min-content;
   gap: 1rem;
+}
+
+.form-add-new-note {
+  display: grid;
+  /* grid-template-rows: repeat(2, min-content) minmax(10rem, min(29rem, 32rem)) min-content; */
+  grid-template-rows: repeat(2, min-content) minmax(10rem, 25rem) min-content;
+  gap: 1rem;
+}
+
+.box-textarea {
+  height: calc(100% - 20px);
 }
 
 .box-textarea > div {
@@ -30,7 +41,10 @@
 .box-checklist {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(36px, 40px));
   gap: 0.4rem 0.7rem;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .box-checklist > div {
@@ -41,13 +55,19 @@
 
 @media only screen and (width < 900px) {
   .box {
+    grid-template-rows: min-content 1fr;
     padding: 1.4rem;
   }
 }
 
+.box-add-new-checklist {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 @media only screen and (width <= 27.75em) {
   .box {
-    padding: 1rem 10px;
+    padding: 1rem 16px;
   }
 }
 

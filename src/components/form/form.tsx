@@ -77,7 +77,7 @@ export default function Form({
         Add new note
       </Text>
       {children}
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={styles["form-add-new-note"]} onSubmit={onSubmit}>
         <div>
           <label htmlFor="new-title">
             <Text as="span" size="3" weight="bold" style={errorTitle ? TEXT_STYLE_ON_ERROR : undefined}>
@@ -114,7 +114,7 @@ export default function Form({
           </button>
         </div>
 
-        <Box>
+        <Box className={styles["box-add-new-checklist"]}>
           {currentInputTypeTabs === INPUT_TYPES.simpleNotes && (
             <div className={styles["box-textarea"]}>
               <label htmlFor="new-note">
