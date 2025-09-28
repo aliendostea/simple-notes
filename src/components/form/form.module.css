@@ -119,7 +119,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  background-color: hsla(335, 30%, 20%, 0.705);
+  background-color: hsla(336, 57%, 20%, 0.651);
   border-radius: max(var(--radius-3));
   cursor: pointer;
 }

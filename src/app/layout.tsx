@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Footer from "@/components/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <footer>
-          <p>
-            ©Copyright 2025. Created with love by <a href="https://github.com/aliendostea">Ang.dev</a> All rights
-            reversed.
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

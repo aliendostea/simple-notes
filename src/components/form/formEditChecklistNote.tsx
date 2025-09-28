@@ -5,6 +5,7 @@ import { useModalStore } from "@/store/modal";
 import { CheckboxProps, ChecklistProps, INIT_CHECKBOX_INPUT, Note as NoteProps } from "@/const";
 
 import styles from "./form.module.css";
+import { BtnCloseX } from "../btnCloseX";
 
 const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
@@ -139,11 +140,7 @@ export default function FormEditChecklistNote({
             {checkboxList.map((item) => {
               return (
                 <CheckboxWrapper key={item.id} value={item.value} errorChecklist={errorInputs.checklist}>
-                  <Button size="1" variant="soft" color="ruby" onClick={() => handleRemoveInput(item.id)}>
-                    <Text as="span" color="ruby" size="3">
-                      x
-                    </Text>
-                  </Button>
+                  <BtnCloseX onClick={() => handleRemoveInput(item.id)} />
                 </CheckboxWrapper>
               );
             })}

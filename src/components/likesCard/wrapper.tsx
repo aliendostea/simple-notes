@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LikeButton from "./likeButton";
 
 import styles from "./likesCard.module.css";
+import { BtnCloseX } from "../btnCloseX";
 
 const LOCAL_STORAGE_LIKES = "likes";
 
@@ -53,9 +54,8 @@ export default function Wrapper({ initialLikes }: { initialLikes: number }) {
     <>
       {isActive && (
         <div className={styles.card}>
-          <button className={styles["btn-x"]} onClick={handleClickClose}>
-            X
-          </button>
+          <BtnCloseX onClick={handleClickClose} />
+
           <LikeButton initialLikes={initialLikes} />
         </div>
       )}

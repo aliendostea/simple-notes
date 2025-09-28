@@ -63,3 +63,9 @@
     background-position: right -40px top 0;
   }
 }
+
+@media only screen and (width >= 31.75em) {
+  .btn-add-new-note {
+    display: none;
+  }
+}

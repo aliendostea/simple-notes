@@ -1,7 +1,8 @@
 import { FormEvent, useState } from "react";
 import { Text, TextField, TextArea, Button, Flex, Box } from "@radix-ui/themes";
 import { INIT_CHECKBOX_INPUT } from "@/const";
-import { IconChecklist, IconNotesPlus, IconSimpleNotes, IconX } from "../icons/icons";
+import { IconChecklist, IconNotesPlus, IconSimpleNotes } from "../icons/icons";
+import { BtnCloseX } from "../btnCloseX";
 
 import styles from "./form.module.css";
 
@@ -34,14 +35,6 @@ function CheckboxWrapper({ children, errorChecklist }: { children: React.ReactNo
       />
       {children}
     </Flex>
-  );
-}
-
-function BtnCloseX({ onClick }: { onClick: () => void }) {
-  return (
-    <button className={styles["btn-close-x"]} onClick={onClick}>
-      <IconX />
-    </button>
   );
 }
 
@@ -157,9 +150,6 @@ export default function Form({
                   return (
                     <CheckboxWrapper key={item.id} errorChecklist={errorChecklist}>
                       <BtnCloseX onClick={() => handleRemoveInput(item.id)} />
-                      {/* <Button size="1" variant="soft" color="ruby" onClick={() => handleRemoveInput(item.id)}>
-                        <IconX />
-                      </Button> */}
                     </CheckboxWrapper>
                   );
                 })}

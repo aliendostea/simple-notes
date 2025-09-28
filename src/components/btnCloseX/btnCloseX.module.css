@@ -1,0 +1,16 @@
+.btn-close-x {
+  all: unset;
+  display: flex;
+  align-content: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.91rem;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: hsla(336, 57%, 20%, 0.651);
+  border-radius: max(var(--radius-3));
+  cursor: pointer;
+}

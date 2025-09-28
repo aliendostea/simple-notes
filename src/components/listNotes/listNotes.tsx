@@ -11,6 +11,7 @@ import { IconEmptyNotes } from "../icons";
 import { Text, Button } from "@radix-ui/themes";
 import { Checklist } from "../checklist";
 import { CheckboxProps, ChecklistProps, INIT_NOTE, Note as NoteProps } from "@/const";
+import { IconNotesPlus } from "../icons/icons";
 
 import styles from "./listNotes.module.css";
 
@@ -51,6 +52,9 @@ export default function ListNotes() {
   };
   const handleResetInputSearch = () => {
     setInputSearch("");
+  };
+  const handleOnClickOpenModal = () => {
+    openModal("isNewNoteModalOpen");
   };
 
   const notesFiltered = notes.filter((note: NoteProps | ChecklistProps) => {
@@ -110,6 +114,16 @@ export default function ListNotes() {
   return (
     <div key="parent-list-notes" className={styles.parent}>
       <SearchBar value={inputSearch} onChange={handleOnChange} onClickReset={handleResetInputSearch} />
+
+      <Button
+        className={styles["btn-add-new-note"]}
+        style={{ whiteSpace: "nowrap" }}
+        size="3"
+        onClick={handleOnClickOpenModal}
+      >
+        <IconNotesPlus />
+        Add new note
+      </Button>
 
       <div className={styles.grid}>
         {!isLoading &&

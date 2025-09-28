@@ -9,6 +9,8 @@ import { Text, Button } from "@radix-ui/themes";
 import { CheckboxProps, INIT_CHECKBOX_INPUT } from "@/const";
 import { IconNotesPlus } from "../icons/icons";
 
+import styles from "./newNote.module.css";
+
 const INPUT_TITLE = "title";
 const INPUT_NOTE = "note";
 const INPUT_TYPES = { simpleNotes: "simpleNotes", checklist: "checklist" };
@@ -104,7 +106,12 @@ export default function NewNote() {
 
   return (
     <div>
-      <Button style={{ whiteSpace: "nowrap" }} size="3" onClick={handleOnClickOpenModal}>
+      <Button
+        className={styles["btn-add-new-note"]}
+        style={{ whiteSpace: "nowrap" }}
+        size="3"
+        onClick={handleOnClickOpenModal}
+      >
         <IconNotesPlus />
         Add new note
       </Button>
