@@ -129,7 +129,13 @@ export default function ListNotes() {
         {!isLoading && (
           <div>
             <span>test</span>
-            <p style={{ color: "white" }}>{JSON.stringify(notes)}</p>
+            {notes.map((element) => {
+              return (
+                <p key={element.id} style={{ color: "white" }}>
+                  {JSON.stringify(element)}
+                </p>
+              );
+            })}
           </div>
         )}
         {!isLoading &&
