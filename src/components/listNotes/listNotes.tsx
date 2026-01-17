@@ -129,7 +129,7 @@ export default function ListNotes() {
         {!isLoading && (
           <div>
             <span>test</span>
-            {notes.map((element) => {
+            {notes.map((element: any) => {
               return (
                 <p key={element.id} style={{ color: "white" }}>
                   {JSON.stringify(element)}
