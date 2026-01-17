@@ -126,18 +126,6 @@ export default function ListNotes() {
       </Button>
 
       <div className={styles.grid}>
-        {!isLoading && (
-          <div>
-            <span>test</span>
-            {notes.map((element: any) => {
-              return (
-                <p key={element.id} style={{ color: "white" }}>
-                  {JSON.stringify(element)}
-                </p>
-              );
-            })}
-          </div>
-        )}
         {!isLoading &&
           notesFiltered?.map((note: any) => {
             // const newNote = note.type === INPUT_TYPES.checklist ? (note as NoteProps) : (note as ChecklistProps);
