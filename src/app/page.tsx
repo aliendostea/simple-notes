@@ -4,7 +4,6 @@ import { ParentHeader } from "@/components/parentHeader";
 import { ToastContainer } from "@/components/toast";
 import styles from "./page.module.css";
 import "@radix-ui/themes/styles.css";
-import LikesCard from "@/components/likesCard/likesCard";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         </div>
         <div id="modal-portal" />
       </Providers>
-      <LikesCard />
       <ToastContainer />
     </main>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import useNotes from "@/hooks/use-notes";
 import { useModalStore } from "@/store/modal";
 import { SearchBar } from "../searchBar";
@@ -100,13 +100,6 @@ export default function ListNotes() {
 
     closeModal("isEditNoteModalOpen");
   };
-
-  useEffect(() => {
-    const getData = async () => {
-      await getNotesFromStore();
-    };
-    getData();
-  }, []);
 
   const emptyArrayNotes = !isLoading && inputSearch.length === 0 && notesFiltered.length === 0;
   const emptyArrayNotesOnSearch = !isLoading && inputSearch.length > 0 && notesFiltered.length === 0;
