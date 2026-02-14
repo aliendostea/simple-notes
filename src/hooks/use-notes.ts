@@ -17,7 +17,7 @@ export default function useNotes() {
           getNotes();
 
           setIsLoading(false);
-        }, 900);
+        }, 100);
       });
     } catch (error) {
       console.log(error);
